@@ -1,20 +1,31 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-// import MeetingTypeList from '@/components/MeetingTypeList';
+import MeetingTypeList from '@/components/MeetingTypeList';
 
 const Home = () => {
-  const [time, setTime] = useState(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
-  const date = (new Intl.DateTimeFormat('en-US', { dateStyle: 'full' })).format(new Date());
+  const time = new Date().toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+  const date = new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(
+    new Date()
+  );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }))
-    }, 1000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTime(
+  //       new Date().toLocaleTimeString('en-US', {
+  //         hour: '2-digit',
+  //         minute: '2-digit',
+  //         second: '2-digit',
+  //       })
+  //     );
+  //   }, 1000);
 
-    return () => clearInterval(interval);
-  }, [])
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <section className="flex size-full flex-col gap-5 text-white">
@@ -24,13 +35,13 @@ const Home = () => {
             Upcoming Meeting at: 12:30 PM
           </h2>
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-extrabold lg:text-7xl">{time}</h1>
+            <h1 className="text-6xl font-extrabold lg:text-8xl">{time}</h1>
             <p className="text-lg font-medium text-sky-1 lg:text-2xl">{date}</p>
           </div>
         </div>
       </div>
 
-      {/* <MeetingTypeList /> */}
+      <MeetingTypeList />
     </section>
   );
 };

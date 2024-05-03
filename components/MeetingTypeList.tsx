@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import HomeCard from './HomeCard';
 import { useRouter } from 'next/navigation';
+import MeetingModal from './MeetingModal';
 
 type Props = {};
 
@@ -41,6 +42,14 @@ const MeetingTypeList = (props: Props) => {
         description="Meeting Recordings"
         className="bg-gradient-to-tr from-amber-400 to-amber-700"
         handleClick={() => router.push('/recordings')}
+      />
+      <MeetingModal
+        isOpen={meetingState === 'isInstantMeeting'}
+        onClose={() => setMeetingState(undefined)}
+        title="Start an Instant Meeting"
+        className="text-center"
+        buttonText="Start Meeting"
+        handleClick={createMeeting}
       />
     </section>
   );
